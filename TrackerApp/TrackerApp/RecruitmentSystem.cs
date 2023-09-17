@@ -54,12 +54,14 @@ namespace TrackerApp
 
                 contractors.Remove(contractor);
             }
-            else // Contractor Does Not Exist
-            {
-
-            }
-
         }
+
+        public void AddJob(Job job)
+        {
+            jobs.Add(job);
+        }
+
+
 
     }
 }
