@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.TextFormatting;
@@ -65,6 +66,17 @@ namespace TrackerApp
             {
                 jobs.Add(job);
             }
+        }
+
+        public void AssignJob(string jobTitle, string firstName, string lastName)
+        {
+
+        }
+
+        private Contractor? GetContractor(string firstName, string lastName)
+        {
+            /* Get Contractor based from First and Last Name, return null if Contractor does not exist */
+            return contractors.FirstOrDefault(x => x.FirstName == firstName && x.LastName == lastName);
         }
 
 
