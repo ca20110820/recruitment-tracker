@@ -8,5 +8,10 @@ namespace TrackerApp
 {
     public class Contractor
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateOnly StartDate { get; set; }
+        public double HourlyWage { get; set; }
+
     }
 }
