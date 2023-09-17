@@ -103,6 +103,11 @@ namespace TrackerApp
             return contractors.FindAll(contractor => contractor.IsAvailable);
         }
 
+        public List<Job> GetUnassignedJobs()
+        {
+
+        }
+
         private Contractor? GetContractor(string firstName, string lastName)
         {
             /* Get Contractor based from First and Last Name, return null if Contractor does not exist */
