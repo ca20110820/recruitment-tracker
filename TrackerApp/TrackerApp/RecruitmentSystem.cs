@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
@@ -108,6 +109,14 @@ namespace TrackerApp
         {
             /* Return all the jobs that have not Contractor assigned and Not Complete */
             return jobs.FindAll(job => job.ContractorAssigned is null && !job.Completed);
+        }
+
+        public List<Job> GetJobByCost(double minCost, double maxCost)
+        {
+            if (minCost > maxCost || minCost < 0 || maxCost < 0)
+                throw new ArgumentOutOfRangeException("minCost or maxCost is out-of-range or invalid!");
+
+            return jobs.FindAll(job => minCost <= job.Cost && job.Cost <= maxCost);
         }
 
         private Contractor? GetContractor(string firstName, string lastName)
