@@ -79,7 +79,11 @@ namespace TrackerApp
             return contractors.FirstOrDefault(x => x.FirstName == firstName && x.LastName == lastName);
         }
 
-
+        private Job? GetJob(string title)
+        {
+            /* Get Job based from Title, return null if job does not exist */
+            return jobs.FirstOrDefault(x => x.Title.Contains(title));
+        }
 
     }
 }
