@@ -100,12 +100,14 @@ namespace TrackerApp
 
         public List<Contractor> GetAvailableContractors()
         {
+            /* Return all Available Contractors */
             return contractors.FindAll(contractor => contractor.IsAvailable);
         }
 
         public List<Job> GetUnassignedJobs()
         {
-
+            /* Return all the jobs that have not Contractor assigned and Not Complete */
+            return jobs.FindAll(job => job.ContractorAssigned is null && !job.Completed);
         }
 
         private Contractor? GetContractor(string firstName, string lastName)
