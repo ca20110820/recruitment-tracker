@@ -38,5 +38,12 @@ namespace TrackerApp
             /* Assign a Contractor to the Job */
             this.contractor = contractor;
         }
+
+        public void DeassignContractor()
+        {
+            /* Deassign a Contractor */
+            contractor = null;
+        }
+
     }
 }
