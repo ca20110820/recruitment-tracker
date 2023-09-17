@@ -80,6 +80,24 @@ namespace TrackerApp
             }
         }
 
+        public void CompleteJob(string jobTitle)
+        {
+            // -- Implementation Strategy --
+            // Update IsAvailable status of contractor (associated to job) to true
+            // Deassign the contractor of job.
+            // Update Completed status of job to true
+            
+            // Note: We do not delete the job from the list of jobs
+
+            Job? job = GetJob(jobTitle);
+
+            if (job != null) // Check if job exists
+            {
+                job.Completed = true; // Update Completed status of job to true
+                job.DeassignContractor(); // Deassign the contractor of job, also update the IsAvailable in the Job class
+            }
+        }
+
         private Contractor? GetContractor(string firstName, string lastName)
         {
             /* Get Contractor based from First and Last Name, return null if Contractor does not exist */
