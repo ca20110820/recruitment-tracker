@@ -24,6 +24,7 @@ namespace TrackerApp
             this.Date = DateOnly.Parse(date);
             this.Cost = cost;
             this.contractor = contractor;
+            this.Completed = false;
         }
         public Job(string title, string date, double cost)
         {
@@ -31,6 +32,7 @@ namespace TrackerApp
             this.Title = title;
             this.Date = DateOnly.Parse(date);
             this.Cost = cost;
+            this.Completed = false;
         }
 
         public void AssignContractor(Contractor contractor)
