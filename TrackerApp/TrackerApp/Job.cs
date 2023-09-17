@@ -51,5 +51,12 @@ namespace TrackerApp
             }
             this.contractor = null;
         }
+
+        public void JobFinished()
+        {
+            /* Change the States of Job when Completed */
+            Completed = true; // Update Completed status to true
+            DeassignContractor(); // Deassign the Contractor
+        }
     }
 }
