@@ -70,7 +70,14 @@ namespace TrackerApp
 
         public void AssignJob(string jobTitle, string firstName, string lastName)
         {
+            Job? job = GetJob(jobTitle);
+            Contractor? contractor = GetContractor(firstName, lastName);
 
+            if (contractor != null && job != null)
+            {
+                // Overwrite if the Job has an existing Contractor Association
+                job.AssignContractor(contractor);
+            }
         }
 
         private Contractor? GetContractor(string firstName, string lastName)
