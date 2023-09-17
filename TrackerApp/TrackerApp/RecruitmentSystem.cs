@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.TextFormatting;
 
 namespace TrackerApp
 {
@@ -24,6 +25,40 @@ namespace TrackerApp
             {
                 contractors.Add(newContractor);
             }
+        }
+
+        public void RemoveContractor(string firstName, string lastName)
+        {
+            /* Remove a Contractor based from First and Last Name */
+
+            // -- Implementation Strategy --
+            // Find and Remove the Contractor based from First & Last Names, if applicable
+            // Remove the Contractor Association with a Job, if applicable
+
+            // Assert that its only one person for this project
+            Contractor? contractor = contractors.FirstOrDefault(x => x.FirstName == firstName && x.LastName == lastName);
+
+            if (contractor != null) // Contractor Exist
+            {
+                // Remove Association with a Job, if applicable
+                foreach(Job job in jobs)
+                {
+                    Contractor? tempContractor = job.ContractorAssigned;
+                    if (tempContractor != null && tempContractor.FirstName==firstName && tempContractor.LastName == lastName)
+                    {
+                        // Set null to job.ContractorAssigned
+                        //job.ContractorAssigned = null; 
+                        break;
+                    }
+                }
+
+                contractors.Remove(contractor);
+            }
+            else // Contractor Does Not Exist
+            {
+
+            }
+
         }
 
     }
