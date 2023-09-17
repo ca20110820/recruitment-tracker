@@ -12,6 +12,6 @@ namespace TrackerApp
         public string LastName { get; set; }
         public DateOnly StartDate { get; set; }
         public double HourlyWage { get; set; }
-
+        public bool IsAvailable { get; set; }
     }
 }
