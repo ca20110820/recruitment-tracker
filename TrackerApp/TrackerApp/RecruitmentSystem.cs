@@ -98,6 +98,11 @@ namespace TrackerApp
             }
         }
 
+        public List<Contractor> GetAvailableContractors()
+        {
+            return contractors.FindAll(contractor => contractor.IsAvailable);
+        }
+
         private Contractor? GetContractor(string firstName, string lastName)
         {
             /* Get Contractor based from First and Last Name, return null if Contractor does not exist */
