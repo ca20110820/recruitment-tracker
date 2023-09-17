@@ -47,7 +47,7 @@ namespace TrackerApp
                     if (tempContractor != null && tempContractor.FirstName==firstName && tempContractor.LastName == lastName)
                     {
                         // Set null to job.ContractorAssigned
-                        //job.ContractorAssigned = null; 
+                        job.DeassignContractor();
                         break;
                     }
                 }
