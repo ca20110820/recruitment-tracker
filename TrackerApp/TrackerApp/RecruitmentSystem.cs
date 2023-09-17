@@ -37,7 +37,7 @@ namespace TrackerApp
             // Remove the Contractor Association with a Job, if applicable
 
             // Assert that its only one person for this project
-            Contractor? contractor = contractors.FirstOrDefault(x => x.FirstName == firstName && x.LastName == lastName);
+            Contractor? contractor = GetContractor(firstName, lastName);
 
             if (contractor != null) // Contractor Exist
             {
