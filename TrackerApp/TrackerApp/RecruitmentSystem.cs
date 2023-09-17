@@ -58,7 +58,13 @@ namespace TrackerApp
 
         public void AddJob(Job job)
         {
-            jobs.Add(job);
+            // Check if job exist in jobs
+            bool jobExists = jobs.Any(x => x.Title == job.Title);
+
+            if (!jobExists)
+            {
+                jobs.Add(job);
+            }
         }
 
 
