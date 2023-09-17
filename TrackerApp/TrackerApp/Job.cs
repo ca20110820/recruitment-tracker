@@ -36,14 +36,18 @@ namespace TrackerApp
         public void AssignContractor(Contractor contractor)
         {
             /* Assign a Contractor to the Job */
+            contractor.IsAvailable = false; // Update the State of IsAvailable to false
             this.contractor = contractor;
         }
 
         public void DeassignContractor()
         {
             /* Deassign a Contractor */
-            contractor = null;
+            if (this.contractor != null)
+            {
+                this.contractor.IsAvailable = true; // Update the State of IsAvailable to true
+            }
+            this.contractor = null;
         }
-
     }
 }
