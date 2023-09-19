@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,6 +43,30 @@ namespace TrackerApp
             else
             {
                 ContractorAssigned = contractorAssigned;
+            }
+        }
+
+        public override bool Equals(object? obj)
+        {
+            //return base.Equals(obj);
+            if (obj is null)
+                return false;
+
+            if (obj.GetType().Equals(GetType()))
+            {
+                Job other = (Job)obj;
+                if (this.Title.Equals(other.Title) && this.Date.Equals(other.Date))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
 
