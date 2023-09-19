@@ -8,48 +8,46 @@ namespace TrackerApp
 {
     public class Job
     {
-
-        private Contractor? contractor = null; // Default to null
-
         public string Title { get; private set; }
         public DateOnly Date { get; set; }
         public double Cost { get; set; }
         public bool Completed { get; set; }
+        public Contractor? ContractorAssigned { get; set; }
 
-        public Contractor? ContractorAssigned { get {  return contractor; } }
-
-        public Job(string title, string date, double cost, Contractor contractor)
+        public Job(string title, DateOnly date, double cost, Contractor? contractorAssigned = null, bool completed=false)
         {
-            this.Title = title;
-            this.Date = DateOnly.Parse(date);
-            this.Cost = cost;
-            this.contractor = contractor;
-            this.Completed = false;
+            Title = title;
+            Date = date;
+            Cost = cost;
+            ContractorAssigned = contractorAssigned; // Default to null
+            Completed = completed; // Default to false
         }
-        public Job(string title, string date, double cost)
+        public Job(string title, string date, double cost, Contractor? contractorAssigned = null, bool completed = false)
         {
-            // Assume: No Contractor given, null by default from backing field.
-            this.Title = title;
-            this.Date = DateOnly.Parse(date);
-            this.Cost = cost;
-            this.Completed = false;
+            Title = title;
+            Date = DateOnly.Parse(date); // Parse date if given as string
+            Cost = cost;
+            ContractorAssigned = contractorAssigned; // Default to null
+            Completed = completed; // Default to false
         }
 
         public void AssignContractor(Contractor contractor)
         {
             /* Assign a Contractor to the Job */
             contractor.IsAvailable = false; // Update the State of IsAvailable to false
-            this.contractor = contractor;
+            contractor.StartDate = Date; // Assign Job Date to Contractor's StartDate
+            ContractorAssigned = contractor;
         }
 
         public void DeassignContractor()
         {
             /* Deassign a Contractor */
-            if (this.contractor != null)
+            if (ContractorAssigned != null)
             {
-                this.contractor.IsAvailable = true; // Update the State of IsAvailable to true
+                ContractorAssigned.IsAvailable = true; // Update the State of IsAvailable to true
+                ContractorAssigned.StartDate = null; // Update the State of StartDate to null
             }
-            this.contractor = null;
+            ContractorAssigned = null;
         }
 
         public void JobFinished()
