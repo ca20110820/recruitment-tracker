@@ -43,5 +43,16 @@ namespace TrackerApp
             datagridContractor.ItemsSource = recruitmentSystem.contractors;
             datagridJob.ItemsSource = recruitmentSystem.jobs;
         }
+
+        private void datagridContractor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void datagridJob_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
     }
 }
