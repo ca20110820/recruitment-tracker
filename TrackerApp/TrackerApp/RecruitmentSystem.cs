@@ -58,20 +58,26 @@ namespace TrackerApp
             contractors.Remove(contractorToRemove);
         }
 
-
         public void AddJob(Job job)
         {
             // Check if job exist in jobs
-            bool jobExists = jobs.Any(x => x.Title == job.Title);
+            //bool jobExists = jobs.Any(x => x.Title == job.Title);
+            bool jobExists = jobs.Any(x => x.Equals(job));
 
             if (!jobExists)
             {
                 jobs.Add(job);
             }
+            else
+            {
+                throw new Exception("Job already exist");
+            }
         }
 
         public void AssignJob(string jobTitle, string firstName, string lastName)
         {
+            // Assigning a Job based from Title, and Contractor's First & Last Names.
+
             Job? job = GetJob(jobTitle);
             Contractor? contractor = GetContractor(firstName, lastName);
 
@@ -81,23 +87,30 @@ namespace TrackerApp
                 job.AssignContractor(contractor);
             }
         }
+        public void AssignJob(Job job, Contractor contractor)
+        {
+            // Check if Contractor is not Available
+            // Check if Job is already assigned or completed
+            if (job.Completed || job.ContractorAssigned == null || !contractor.IsAvailable)
+            {
+                throw new InvalidOperationException("Cant assign job to contractor");
+            }
+
+            job.AssignContractor(contractor);
+        }
 
         public void CompleteJob(string jobTitle)
         {
-            // -- Implementation Strategy --
-            // Update IsAvailable status of contractor (associated to job) to true
-            // Deassign the contractor of job.
-            // Update Completed status of job to true
-            
-            // Note: We do not delete the job from the list of jobs
-
             Job? job = GetJob(jobTitle);
 
             if (job != null) // Check if job exists
             {
-                job.Completed = true; // Update Completed status of job to true
-                job.DeassignContractor(); // Deassign the contractor of job, also update the IsAvailable in the Job class
+                job.JobFinished();
             }
+        }
+        public void CompleteJob(Job job)
+        {
+            job.JobFinished();
         }
 
         public List<Contractor> GetAvailableContractors()
