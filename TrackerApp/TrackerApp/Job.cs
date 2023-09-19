@@ -19,16 +19,30 @@ namespace TrackerApp
             Title = title;
             Date = date;
             Cost = cost;
-            ContractorAssigned = contractorAssigned; // Default to null
             Completed = completed; // Default to false
+            if (contractorAssigned != null)
+            {
+                AssignContractor(contractorAssigned);
+            }
+            else
+            {
+                ContractorAssigned = contractorAssigned;
+            }
         }
         public Job(string title, string date, double cost, Contractor? contractorAssigned = null, bool completed = false)
         {
             Title = title;
             Date = DateOnly.Parse(date); // Parse date if given as string
             Cost = cost;
-            ContractorAssigned = contractorAssigned; // Default to null
             Completed = completed; // Default to false
+            if (contractorAssigned != null)
+            {
+                AssignContractor(contractorAssigned);
+            }
+            else
+            {
+                ContractorAssigned = contractorAssigned;
+            }
         }
 
         public void AssignContractor(Contractor contractor)
