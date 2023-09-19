@@ -47,13 +47,14 @@
         <TabControl x:Name="tabctrlTables" Margin="631,61,10,172">
             <TabItem Header="Contractor">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="datagridContractor" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="datagridContractor_SelectionChanged">
+                    <DataGrid x:Name="datagridContractor" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="True" SelectionChanged="datagridContractor_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
                             <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
-                            <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate}"/>
                             <DataGridTextColumn Header="Hourly Wage" Binding="{Binding HourlyWage}"/>
                             <DataGridTextColumn Header="IsAvailable" Binding="{Binding IsAvailable}"/>
+                            <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate, StringFormat=\{0:dd/MM/yyyy\}}"/>
+
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

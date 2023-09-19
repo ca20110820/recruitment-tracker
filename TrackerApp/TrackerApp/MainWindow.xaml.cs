@@ -29,13 +29,12 @@ namespace TrackerApp
             InitializeComponent();
             // Add Initial Data to RecruitmentSystem
             recruitmentSystem.AddContractor(new Contractor("Cedric", "Anover", 45, "23/09/2023"));
-            recruitmentSystem.AddContractor(new Contractor("John", "Cena", 12));
+            recruitmentSystem.AddContractor(new Contractor("John", "Cena", 12, "05/01/2023"));
             recruitmentSystem.AddContractor(new Contractor("Jack", "Ma", 200d));
 
             recruitmentSystem.AddJob(new Job("Data Scientist", "29/12/2023", 300000));
             recruitmentSystem.AddJob(new Job("Data Engineer", "5/11/2023", 100000));
             recruitmentSystem.AddJob(new Job("Programmer", "6/01/2024", 100000));
-
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
