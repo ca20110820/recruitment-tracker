@@ -86,18 +86,8 @@ namespace TrackerApp
             sliderCost.Value = job.Cost;
             chkbxCompleted.IsChecked = job.Completed;
 
-            if (job.ContractorAssigned != null)
-            {
-                comboboxContractorAssigned.SelectedItem = job;
-            }
-            else
-            {
-                if (!job.Completed)
-                {
-                    comboboxContractorAssigned.ItemsSource = null;
-                    comboboxContractorAssigned.ItemsSource = recruitmentSystem.GetAvailableContractors();
-                }
-            }
+            comboboxContractorAssigned.ItemsSource = recruitmentSystem.contractors;
+            comboboxContractorAssigned.SelectedItem = job.ContractorAssigned;
         }
 
         private void sliderHourlyWage_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
