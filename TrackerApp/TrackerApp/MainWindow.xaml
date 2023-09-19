@@ -18,7 +18,6 @@
                 <Label Content="Hourly Wage" Height="30" HorizontalAlignment="Left" Width="120" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
                 <Slider x:Name="sliderHourlyWage" Maximum="200" SmallChange="0.01" />
                 <Label x:Name="labelHourlyWage" Content="$0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
                 <CheckBox x:Name="chkbxIsAvailable" IsChecked="{Binding IsFeatureEnabled}">
                     <CheckBox.Template>
                         <ControlTemplate TargetType="{x:Type CheckBox}">
@@ -30,14 +29,38 @@
                     </CheckBox.Template>
                     <TextBlock Text="Is Available?" FontSize="18" FontWeight="Bold"/>
                 </CheckBox>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox x:Name="grpbxJob" Header="Job" Margin="320,61,874,172" Grid.RowSpan="10">
+            <StackPanel>
+                <Label Content="Title" Height="30" HorizontalAlignment="Left" Width="105" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="txtbxTitle" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="16"/>
+                <Label Content="Date" Height="30" HorizontalAlignment="Left" Width="105" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
+                <DatePicker x:Name="datepickerJobDate" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <Label Content="Cost" Height="30" HorizontalAlignment="Left" Width="120" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
+                <Slider x:Name="sliderCost" Maximum="100000" SmallChange="10" />
+                <Label x:Name="labelCost" Content="$0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <CheckBox x:Name="chkbxCompleted" IsChecked="{Binding IsFeatureEnabled}">
+                    <CheckBox.Template>
+                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                            <StackPanel Orientation="Horizontal">
+                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                <CheckBox Content="" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </ControlTemplate>
+                    </CheckBox.Template>
+                    <TextBlock Text="Completed?" FontSize="18" FontWeight="Bold"/>
+                </CheckBox>
+
+                <Label Content="Contractor Assigned" Height="30" HorizontalAlignment="Left" Width="200" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
+                <ComboBox x:Name="comboboxContractorAssigned" Height="28"/>
 
             </StackPanel>
-
-
         </GroupBox>
-        <GroupBox x:Name="grpbxJob" Header="Job" Margin="320,61,874,172">
-
-        </GroupBox>
+        
         <TabControl Margin="631,61,10,172">
             <TabItem Header="Contractor">
                 <Grid Background="#FFE5E5E5"/>
