@@ -75,7 +75,7 @@
             </TabItem>
         </TabControl>
 
-        <Button x:Name="btnAddContractor" Content="Add Contractor" HorizontalAlignment="Left" Margin="120,517,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnAddContractor" Content="Add Contractor" HorizontalAlignment="Left" Margin="120,517,0,0" VerticalAlignment="Top" Click="btnAddContractor_Click"/>
         <Button x:Name="btnRemoveContractor" Content="Remove Contractor" HorizontalAlignment="Left" Margin="109,542,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnUpdateContractor" Content="Update Contractor" HorizontalAlignment="Left" Margin="112,567,0,0" VerticalAlignment="Top"/>
         

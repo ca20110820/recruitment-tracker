@@ -124,5 +124,26 @@ namespace TrackerApp
                 MessageBox.Show(err.Message, "Error", MessageBoxButton.OK);
             }
         }
+
+        private void btnAddContractor_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Contractor newContractor = new Contractor()
+                {
+                    FirstName = txtbxFirstName.Text,
+                    LastName = txtbxLastName.Text,
+                    HourlyWage = sliderHourlyWage.Value,
+                    StartDate = DateOnly.Parse(datepickerStartDate.Text),
+                    IsAvailable = (bool)chkbxIsAvailable.IsChecked
+                };
+
+
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK);
+            }
+        }
     }
 }
