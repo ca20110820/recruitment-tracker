@@ -56,7 +56,11 @@ namespace TrackerApp
         private void datagridJob_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Job selectedJob = (Job)datagridJob.SelectedItem;
-            UpdateJobGroupBox(selectedJob);
+
+            if (selectedJob != null) // Sometimes Job is resulting in null
+            {
+                UpdateJobGroupBox(selectedJob);
+            }
         }
 
 
@@ -127,23 +131,35 @@ namespace TrackerApp
 
         private void btnAddContractor_Click(object sender, RoutedEventArgs e)
         {
+
+            Contractor newContractor;
+
             try
             {
-                Contractor newContractor = new Contractor()
-                {
-                    FirstName = txtbxFirstName.Text,
-                    LastName = txtbxLastName.Text,
-                    HourlyWage = sliderHourlyWage.Value,
-                    StartDate = DateOnly.Parse(datepickerStartDate.Text),
-                    IsAvailable = (bool)chkbxIsAvailable.IsChecked
-                };
 
-
+                newContractor = new Contractor(
+                            txtbxFirstName.Text, 
+                            txtbxLastName.Text, 
+                            Math.Round(sliderHourlyWage.Value, 2),
+                            datepickerStartDate.SelectedDate != null? DateOnly.Parse(datepickerStartDate.Text) : null, 
+                            chkbxIsAvailable.IsChecked.Value
+                    );
             }
             catch(Exception err)
             {
                 MessageBox.Show(err.Message, "Error", MessageBoxButton.OK);
+                return;
             }
+
+            try
+            {
+                recruitmentSystem.AddContractor(newContractor); // Add the New Contractor
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK);
+            }
+
         }
     }
 }
