@@ -43,6 +43,11 @@ namespace TrackerApp
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
+            RefreshDataGrid();
+        }
+
+        private void RefreshDataGrid()
+        {
             datagridContractor.ItemsSource = null;
             datagridJob.ItemsSource = null;
 
@@ -184,7 +189,21 @@ namespace TrackerApp
             }
 
             Contractor contractor = (Contractor)datagridContractor.SelectedItem;
-            recruitmentSystem.RemoveContractor(contractor);
+
+            try
+            {
+                recruitmentSystem.RemoveContractor(contractor);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK);
+            }
+            finally
+            {
+                datagridContractor.ItemsSource = null;
+                datagridContractor.ItemsSource = recruitmentSystem.contractors;
+            }
+            
         }
     }
 }
