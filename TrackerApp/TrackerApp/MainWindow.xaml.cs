@@ -35,9 +35,9 @@ namespace TrackerApp
             recruitmentSystem.AddContractor(new Contractor("John", "Wick", 50d, "29/06/2023", false));
 
             recruitmentSystem.AddJob(new Job("Data Scientist", "29/12/2023", 300000));
-            recruitmentSystem.AddJob(new Job("Data Engineer", "5/11/2023", 100000));
+            recruitmentSystem.AddJob(new Job("Data Engineer", "5/11/2023", 70000));
             recruitmentSystem.AddJob(new Job("Programmer", "6/01/2024", 100000));
-            recruitmentSystem.AddJob(new Job("Software Architect", "25/02/2024", 100000, completed:true));
+            recruitmentSystem.AddJob(new Job("Software Architect", "25/02/2024", 40000, completed:true));
             recruitmentSystem.AssignJob(recruitmentSystem.jobs[2], recruitmentSystem.contractors[0]);
         }
 
@@ -120,6 +120,19 @@ namespace TrackerApp
         {
             datagridJob.ItemsSource = recruitmentSystem.GetUnassignedJobs();
             tabctrlTables.SelectedItem = tabitemJob;
+        }
+
+        private void btnShowJobsByCostRange_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                datagridJob.ItemsSource = recruitmentSystem.GetJobs(double.Parse(txtbxMinCost.Text), double.Parse(txtbxMaxCost.Text));
+                tabctrlTables.SelectedItem = tabitemJob;
+            }
+            catch (Exception err) 
+            {
+                MessageBox.Show(err.Message, "Error", MessageBoxButton.OK);
+            }
         }
     }
 }

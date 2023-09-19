@@ -91,7 +91,7 @@
         <Label Content="Max Cost:" HorizontalAlignment="Left" Margin="1240,542,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtbxMaxCost" HorizontalAlignment="Left" Margin="1306,548,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="56"/>
         <TextBox x:Name="txtbxMinCost" HorizontalAlignment="Left" Margin="1306,579,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="56"/>
-        <Button x:Name="btnShowJobsByCostRange" Content="Show Jobs" HorizontalAlignment="Left" Margin="1306,608,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnShowJobsByCostRange" Content="Show Jobs" HorizontalAlignment="Left" Margin="1306,608,0,0" VerticalAlignment="Top" Click="btnShowJobsByCostRange_Click"/>
 
     </Grid>
 </Window>
