@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,10 +32,12 @@ namespace TrackerApp
             recruitmentSystem.AddContractor(new Contractor("Cedric", "Anover", 45, "23/09/2023"));
             recruitmentSystem.AddContractor(new Contractor("John", "Cena", 12, "05/01/2023"));
             recruitmentSystem.AddContractor(new Contractor("Jack", "Ma", 200d));
+            recruitmentSystem.AddContractor(new Contractor("John", "Wick", 50d));
 
             recruitmentSystem.AddJob(new Job("Data Scientist", "29/12/2023", 300000));
             recruitmentSystem.AddJob(new Job("Data Engineer", "5/11/2023", 100000));
             recruitmentSystem.AddJob(new Job("Programmer", "6/01/2024", 100000));
+            recruitmentSystem.AddJob(new Job("Software Architect", "25/02/2024", 100000,completed:true));
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
@@ -51,7 +54,8 @@ namespace TrackerApp
 
         private void datagridJob_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Job selectedJob = (Job)datagridJob.SelectedItem;
+            UpdateJobGroupBox(selectedJob);
         }
 
 
@@ -74,9 +78,34 @@ namespace TrackerApp
             chkbxIsAvailable.IsChecked = contractor.IsAvailable;
         }
 
+        private void UpdateJobGroupBox(Job job)
+        {
+            txtbxTitle.Text = job.Title;
+            datepickerJobDate.Text = job.Date.ToString();
+            sliderCost.Value = job.Cost;
+            chkbxCompleted.IsChecked = job.Completed;
+
+            if (job.ContractorAssigned != null)
+            {
+                comboboxContractorAssigned.SelectedItem = job;
+            }
+            else
+            {
+                if (!job.Completed)
+                {
+                    comboboxContractorAssigned.ItemsSource = recruitmentSystem.GetAvailableContractors();
+                }
+            }
+        }
+
         private void sliderHourlyWage_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             labelHourlyWage.Content = $"${sliderHourlyWage.Value:0.##}";
+        }
+
+        private void sliderCost_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            labelCost.Content = $"${sliderCost.Value:0.##}";
         }
     }
 }

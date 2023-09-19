@@ -33,7 +33,7 @@
                 <DatePicker x:Name="datepickerJobDate" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                 <Label Content="Cost" Height="30" HorizontalAlignment="Left" Width="120" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
-                <Slider x:Name="sliderCost" Maximum="100000" SmallChange="10" />
+                <Slider x:Name="sliderCost" Maximum="500000" SmallChange="0.01" ValueChanged="sliderCost_ValueChanged" />
                 <Label x:Name="labelCost" Content="$0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                 <CheckBox x:Name="chkbxCompleted" Content="Job Completed?" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
@@ -65,7 +65,7 @@
                     <DataGrid x:Name="datagridJob" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="True" SelectionChanged="datagridJob_SelectionChanged" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
-                            <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=\{0:dd/MM/yyyy\}}"/>
                             <DataGridTextColumn Header="Cost" Binding="{Binding Cost}"/>
                             <DataGridTextColumn Header="Completed" Binding="{Binding Completed}"/>
                             <DataGridTextColumn Header="Contractor Assigned" Binding="{Binding ContractorAssigned}"/>
