@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="Recruitment Tracker" Height="700" Width="1500">
     <Grid>
-        
+        <GroupBox x:Name="grpbxContractor" Header="Contractor" Margin="10,61,1185,172">
+            
+        </GroupBox>
+        <GroupBox x:Name="grpbxJob" Header="Job" Margin="320,61,874,172">
+
+        </GroupBox>
     </Grid>
 </Window>
