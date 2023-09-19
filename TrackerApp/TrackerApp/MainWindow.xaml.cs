@@ -43,6 +43,9 @@ namespace TrackerApp
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
+            datagridContractor.ItemsSource = null;
+            datagridJob.ItemsSource = null;
+
             datagridContractor.ItemsSource = recruitmentSystem.contractors;
             datagridJob.ItemsSource = recruitmentSystem.jobs;
         }
