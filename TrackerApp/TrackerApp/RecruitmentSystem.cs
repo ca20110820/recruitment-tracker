@@ -55,6 +55,11 @@ namespace TrackerApp
         }
         public void RemoveContractor(Contractor contractorToRemove)
         {
+            if (!contractorToRemove.IsAvailable)
+            {
+                throw new Exception("Contractor is not available and is probably working");
+            }
+
             contractors.Remove(contractorToRemove);
         }
 
