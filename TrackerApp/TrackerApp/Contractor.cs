@@ -36,5 +36,9 @@ namespace TrackerApp
             IsAvailable = isAvailable; // Default to False
         }
 
+        public override string ToString()
+        {
+            return FullName;
+        }
     }
 }
