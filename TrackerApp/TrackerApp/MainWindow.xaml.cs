@@ -173,5 +173,18 @@ namespace TrackerApp
             }
 
         }
+
+        private void btnRemoveContractor_Click(object sender, RoutedEventArgs e)
+        {
+            if (datagridContractor.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a Contractor", "Warning", MessageBoxButton.OK);
+                tabctrlTables.SelectedItem = tabitemContractor;
+                return;
+            }
+
+            Contractor contractor = (Contractor)datagridContractor.SelectedItem;
+            recruitmentSystem.RemoveContractor(contractor);
+        }
     }
 }
