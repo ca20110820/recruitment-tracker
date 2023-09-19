@@ -17,19 +17,11 @@
                 <Label Content="Start Date" Height="30" HorizontalAlignment="Left" Width="105" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
                 <DatePicker x:Name="datepickerStartDate" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Label Content="Hourly Wage" Height="30" HorizontalAlignment="Left" Width="120" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
-                <Slider x:Name="sliderHourlyWage" Maximum="200" SmallChange="0.01" />
+                <Slider x:Name="sliderHourlyWage" Maximum="200" SmallChange="0.01" ValueChanged="sliderHourlyWage_ValueChanged" />
                 <Label x:Name="labelHourlyWage" Content="$0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <CheckBox x:Name="chkbxIsAvailable" IsChecked="{Binding IsFeatureEnabled}">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="{x:Type CheckBox}">
-                            <StackPanel Orientation="Horizontal">
-                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
-                                <CheckBox Content="" VerticalAlignment="Center" />
-                            </StackPanel>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                    <TextBlock Text="Is Available?" FontSize="18" FontWeight="Bold"/>
-                </CheckBox>
+                <CheckBox x:Name="chkbxIsAvailable" Content="Is Available?" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
+
+
             </StackPanel>
         </GroupBox>
 
@@ -44,17 +36,7 @@
                 <Slider x:Name="sliderCost" Maximum="100000" SmallChange="10" />
                 <Label x:Name="labelCost" Content="$0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                <CheckBox x:Name="chkbxCompleted" IsChecked="{Binding IsFeatureEnabled}">
-                    <CheckBox.Template>
-                        <ControlTemplate TargetType="{x:Type CheckBox}">
-                            <StackPanel Orientation="Horizontal">
-                                <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
-                                <CheckBox Content="" VerticalAlignment="Center" />
-                            </StackPanel>
-                        </ControlTemplate>
-                    </CheckBox.Template>
-                    <TextBlock Text="Completed?" FontSize="18" FontWeight="Bold"/>
-                </CheckBox>
+                <CheckBox x:Name="chkbxCompleted" Content="Job Completed?" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
 
                 <Label Content="Contractor Assigned" Height="30" HorizontalAlignment="Left" Width="200" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
                 <ComboBox x:Name="comboboxContractorAssigned" Height="28"/>
@@ -65,7 +47,7 @@
         <TabControl x:Name="tabctrlTables" Margin="631,61,10,172">
             <TabItem Header="Contractor">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="datagridContractor" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <DataGrid x:Name="datagridContractor" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="datagridContractor_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
                             <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
@@ -79,7 +61,7 @@
 
             <TabItem Header="Job">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="datagridJob" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <DataGrid x:Name="datagridJob" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="datagridJob_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
                             <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>

@@ -30,7 +30,7 @@ namespace TrackerApp
             // Add Initial Data to RecruitmentSystem
             recruitmentSystem.AddContractor(new Contractor("Cedric", "Anover", 45));
             recruitmentSystem.AddContractor(new Contractor("John", "Cena", 12));
-            recruitmentSystem.AddContractor(new Contractor("Jack", "Ma", 500d));
+            recruitmentSystem.AddContractor(new Contractor("Jack", "Ma", 200d));
 
             recruitmentSystem.AddJob(new Job("Data Scientist", "29/12/2023", 300000));
             recruitmentSystem.AddJob(new Job("Data Engineer", "5/11/2023", 100000));
@@ -46,7 +46,8 @@ namespace TrackerApp
 
         private void datagridContractor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Contractor selectedContractor = (Contractor)datagridContractor.SelectedItem;
+            UpdateContractorGroupBox(selectedContractor);
         }
 
         private void datagridJob_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -54,5 +55,24 @@ namespace TrackerApp
 
         }
 
+
+        private void UpdateContractorGroupBox(Contractor contractor)
+        {
+            txtbxFirstName.Text = contractor.FirstName;
+            txtbxLastName.Text = contractor.LastName;
+
+            if (contractor.StartDate != null)
+            {
+                datepickerStartDate.DisplayDate = DateTime.Parse($"${contractor.StartDate:0.##}".ToString());
+            }
+
+            sliderHourlyWage.Value = contractor.HourlyWage;
+            chkbxIsAvailable.IsChecked = contractor.IsAvailable;
+        }
+
+        private void sliderHourlyWage_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            labelHourlyWage.Content = $"${sliderHourlyWage.Value:0.##}";
+        }
     }
 }
