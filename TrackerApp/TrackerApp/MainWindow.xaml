@@ -62,7 +62,7 @@
 
             <TabItem Header="Job">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="datagridJob" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="datagridJob_SelectionChanged">
+                    <DataGrid x:Name="datagridJob" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="True" SelectionChanged="datagridJob_SelectionChanged" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
                             <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
@@ -77,7 +77,10 @@
 
         <Button x:Name="btnAddContractor" Content="Add Contractor" HorizontalAlignment="Left" Margin="120,517,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnRemoveContractor" Content="Remove Contractor" HorizontalAlignment="Left" Margin="109,542,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnUpdateContractor" Content="Update Contractor" HorizontalAlignment="Left" Margin="112,567,0,0" VerticalAlignment="Top"/>
+        
         <Button x:Name="btnAddJob" Content="Create Job" HorizontalAlignment="Left" Margin="449,517,0,0" VerticalAlignment="Top"/>
+        
         <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="1039,517,0,0" VerticalAlignment="Top" Click="btnRefresh_Click"/>
 
         <Button x:Name="btnViewAvailableContractors" Content="Show Available Contractors" HorizontalAlignment="Left" Margin="697,581,0,0" VerticalAlignment="Top"/>
