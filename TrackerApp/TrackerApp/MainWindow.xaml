@@ -64,7 +64,7 @@
         <TabControl Margin="631,61,10,172">
             <TabItem Header="Contractor">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <DataGrid x:Name="datagridContractor" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
                             <DataGridTextColumn Header="Last Name" Binding="{Binding Last}"/>
@@ -79,7 +79,15 @@
             
             <TabItem Header="Job">
                 <Grid Background="#FFE5E5E5">
-                    
+                    <DataGrid x:Name="datagridJob" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                            <DataGridTextColumn Header="Cost" Binding="{Binding Cost}"/>
+                            <DataGridTextColumn Header="Completed" Binding="{Binding Completed}"/>
+                            <DataGridTextColumn Header="Contractor Assigned" Binding="{Binding ContractorAssigned}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
         </TabControl>
