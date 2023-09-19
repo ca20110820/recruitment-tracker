@@ -37,7 +37,8 @@ namespace TrackerApp
             recruitmentSystem.AddJob(new Job("Data Scientist", "29/12/2023", 300000));
             recruitmentSystem.AddJob(new Job("Data Engineer", "5/11/2023", 100000));
             recruitmentSystem.AddJob(new Job("Programmer", "6/01/2024", 100000));
-            recruitmentSystem.AddJob(new Job("Software Architect", "25/02/2024", 100000,completed:true));
+            recruitmentSystem.AddJob(new Job("Software Architect", "25/02/2024", 100000, completed:true));
+            recruitmentSystem.AssignJob(recruitmentSystem.jobs[2], recruitmentSystem.contractors[0]);
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
@@ -114,6 +115,9 @@ namespace TrackerApp
             datagridContractor.ItemsSource = recruitmentSystem.GetAvailableContractors();
         }
 
-
+        private void btnViewUnassignedJobs_Click(object sender, RoutedEventArgs e)
+        {
+            datagridJob.ItemsSource = recruitmentSystem.GetUnassignedJobs();
+        }
     }
 }
