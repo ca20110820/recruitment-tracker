@@ -8,10 +8,18 @@
         Title="Recruitment Tracker" Height="700" Width="1500">
     <Grid>
         <GroupBox x:Name="grpbxContractor" Header="Contractor" Margin="10,61,1185,172">
-            
+
         </GroupBox>
         <GroupBox x:Name="grpbxJob" Header="Job" Margin="320,61,874,172">
 
         </GroupBox>
+        <TabControl Margin="631,61,10,172">
+            <TabItem Header="Contractor">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Job">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
