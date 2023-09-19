@@ -19,6 +19,22 @@ namespace TrackerApp
             get { return  $"{FirstName} {LastName}"; }
         }
 
+        public Contractor(string firstName, string lastName, DateOnly startDate, double hourlyWage, bool isAvailable)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            StartDate = startDate;
+            HourlyWage = hourlyWage;
+            IsAvailable = isAvailable;
+        }
+        public Contractor(string firstName, string lastName, string startDate, double hourlyWage, bool isAvailable)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            StartDate = DateOnly.Parse(startDate);
+            HourlyWage = hourlyWage;
+            IsAvailable = isAvailable;
+        }
         public Contractor(string firstName, string lastName, double hourlyWage)
         {
             FirstName = firstName;
