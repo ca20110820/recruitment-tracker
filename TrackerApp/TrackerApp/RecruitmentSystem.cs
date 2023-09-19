@@ -91,7 +91,7 @@ namespace TrackerApp
         {
             // Check if Contractor is not Available
             // Check if Job is already assigned or completed
-            if (job.Completed || job.ContractorAssigned == null || !contractor.IsAvailable)
+            if (job.Completed || job.ContractorAssigned != null || !contractor.IsAvailable)
             {
                 throw new InvalidOperationException("Cant assign job to contractor");
             }
