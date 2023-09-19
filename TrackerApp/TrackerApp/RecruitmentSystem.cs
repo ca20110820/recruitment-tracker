@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
@@ -11,21 +12,21 @@ namespace TrackerApp
 {
     public class RecruitmentSystem
     {
-        private List<Contractor> contractors = new List<Contractor>();
-        private List<Job> jobs = new List<Job>();
-
-        public List<Contractor> Contractors { get {  return contractors; } }
-        public List<Job> Jobs { get {  return jobs; } }
+        public List<Contractor> contractors = new List<Contractor>();
+        public List<Job> jobs = new List<Job>();
 
         public void AddContractor(Contractor newContractor)
         {
             // Check if contractor exist in contractors
             bool contractorExists = contractors.Any(contractor => contractor.FirstName == newContractor.FirstName && contractor.LastName == newContractor.LastName);
 
-            // Add the New Contractor if they do not exists in our list of contractors
-            if (!contractorExists)
+            if (!contractorExists) // Add the New Contractor if they do not exists in our list of contractors
             {
                 contractors.Add(newContractor);
+            }
+            else // Throw exception if contractor already exist in the list
+            {
+                throw new Exception("This contractor already exist");
             }
         }
 
@@ -33,12 +34,7 @@ namespace TrackerApp
         {
             /* Remove a Contractor based from First and Last Name */
 
-            // -- Implementation Strategy --
-            // Find and Remove the Contractor based from First & Last Names, if applicable
-            // Remove the Contractor Association with a Job, if applicable
-
-            // Assert that its only one person for this project
-            Contractor? contractor = GetContractor(firstName, lastName);
+            Contractor? contractor = GetContractor(firstName, lastName); // Assert that its only one person for this project
 
             if (contractor != null) // Contractor Exist
             {
@@ -57,6 +53,11 @@ namespace TrackerApp
                 contractors.Remove(contractor);
             }
         }
+        public void RemoveContractor(Contractor contractorToRemove)
+        {
+            contractors.Remove(contractorToRemove);
+        }
+
 
         public void AddJob(Job job)
         {
