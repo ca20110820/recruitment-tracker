@@ -53,7 +53,10 @@ namespace TrackerApp
         private void datagridContractor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Contractor selectedContractor = (Contractor)datagridContractor.SelectedItem;
-            UpdateContractorGroupBox(selectedContractor);
+            if (selectedContractor != null) // Sometimes Job is resulting in null
+            {
+                UpdateContractorGroupBox(selectedContractor);
+            }
         }
 
         private void datagridJob_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -137,6 +140,12 @@ namespace TrackerApp
 
             Contractor newContractor;
 
+            if (txtbxFirstName.Text.Trim().Length==0 || txtbxLastName.Text.Trim().Length == 0 || Math.Round(sliderHourlyWage.Value, 2)==0)
+            {
+                MessageBox.Show("Invalid Input", "Error", MessageBoxButton.OK);
+                return;
+            }
+
             try
             {
 
@@ -144,8 +153,8 @@ namespace TrackerApp
                             txtbxFirstName.Text, 
                             txtbxLastName.Text, 
                             Math.Round(sliderHourlyWage.Value, 2),
-                            datepickerStartDate.SelectedDate != null? DateOnly.Parse(datepickerStartDate.Text) : null, 
-                            chkbxIsAvailable.IsChecked.Value
+                            datepickerStartDate.SelectedDate != null? DateOnly.Parse(datepickerStartDate.Text) : null,
+                            chkbxIsAvailable.IsChecked != null? chkbxIsAvailable.IsChecked.Value : true
                     );
             }
             catch(Exception err)
