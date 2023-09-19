@@ -125,13 +125,19 @@ namespace TrackerApp
             return jobs.FindAll(job => job.ContractorAssigned is null && !job.Completed);
         }
 
-        public List<Job> GetJobByCost(double minCost, double maxCost)
+        public List<Job> GetJobs(double minCost, double maxCost)
         {
             if (minCost > maxCost || minCost < 0 || maxCost < 0)
                 throw new ArgumentOutOfRangeException("minCost or maxCost is out-of-range or invalid!");
 
             return jobs.FindAll(job => minCost <= job.Cost && job.Cost <= maxCost);
         }
+        public List<Job> GetJobs(bool unassigned=true, bool completed = false)
+        {
+            return jobs.FindAll(job => (unassigned? job.ContractorAssigned==null:false) && job.Completed == completed);
+        }
+
+
 
         private Contractor? GetContractor(string firstName, string lastName)
         {
