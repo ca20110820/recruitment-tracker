@@ -28,7 +28,7 @@ namespace TrackerApp
 
             InitializeComponent();
             // Add Initial Data to RecruitmentSystem
-            recruitmentSystem.AddContractor(new Contractor("Cedric", "Anover", 45));
+            recruitmentSystem.AddContractor(new Contractor("Cedric", "Anover", 45, "23/09/2023"));
             recruitmentSystem.AddContractor(new Contractor("John", "Cena", 12));
             recruitmentSystem.AddContractor(new Contractor("Jack", "Ma", 200d));
 
@@ -63,7 +63,12 @@ namespace TrackerApp
 
             if (contractor.StartDate != null)
             {
-                datepickerStartDate.DisplayDate = DateTime.Parse($"${contractor.StartDate:0.##}".ToString());
+                //datepickerStartDate.DisplayDate = DateTime.Parse(contractor.StartDate.ToString());
+                datepickerStartDate.Text = contractor.StartDate.ToString();
+            }
+            else
+            {
+                datepickerStartDate.Text = "";
             }
 
             sliderHourlyWage.Value = contractor.HourlyWage;
