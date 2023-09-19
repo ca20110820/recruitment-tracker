@@ -32,7 +32,7 @@ namespace TrackerApp
             recruitmentSystem.AddContractor(new Contractor("Cedric", "Anover", 45, "23/09/2023"));
             recruitmentSystem.AddContractor(new Contractor("John", "Cena", 12, "05/01/2023"));
             recruitmentSystem.AddContractor(new Contractor("Jack", "Ma", 200d));
-            recruitmentSystem.AddContractor(new Contractor("John", "Wick", 50d));
+            recruitmentSystem.AddContractor(new Contractor("John", "Wick", 50d, "29/06/2023", false));
 
             recruitmentSystem.AddJob(new Job("Data Scientist", "29/12/2023", 300000));
             recruitmentSystem.AddJob(new Job("Data Engineer", "5/11/2023", 100000));
@@ -93,6 +93,7 @@ namespace TrackerApp
             {
                 if (!job.Completed)
                 {
+                    comboboxContractorAssigned.ItemsSource = null;
                     comboboxContractorAssigned.ItemsSource = recruitmentSystem.GetAvailableContractors();
                 }
             }
@@ -107,5 +108,12 @@ namespace TrackerApp
         {
             labelCost.Content = $"${sliderCost.Value:0.##}";
         }
+
+        private void btnViewAvailableContractors_Click(object sender, RoutedEventArgs e)
+        {
+            datagridContractor.ItemsSource = recruitmentSystem.GetAvailableContractors();
+        }
+
+
     }
 }

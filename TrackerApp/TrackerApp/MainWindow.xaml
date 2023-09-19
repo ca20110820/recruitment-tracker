@@ -84,7 +84,7 @@
         
         <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="1039,517,0,0" VerticalAlignment="Top" Click="btnRefresh_Click"/>
 
-        <Button x:Name="btnViewAvailableContractors" Content="Show Available Contractors" HorizontalAlignment="Left" Margin="697,581,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnViewAvailableContractors" Content="Show Available Contractors" HorizontalAlignment="Left" Margin="697,581,0,0" VerticalAlignment="Top" Click="btnViewAvailableContractors_Click"/>
         <Button x:Name="btnViewUnassignedJobs" Content="Show Unassigned Jobs" HorizontalAlignment="Left" Margin="945,581,0,0" VerticalAlignment="Top"/>
 
         <Label Content="Min Cost:" HorizontalAlignment="Left" Margin="1240,573,0,0" VerticalAlignment="Top"/>
