@@ -19,21 +19,29 @@ namespace TrackerApp
             get { return  $"{FirstName} {LastName}"; }
         }
 
-        public Contractor(string firstName, string lastName, double hourlyWage, DateOnly? startDate=null, bool isAvailable=false)
+        public Contractor(string firstName, string lastName, double hourlyWage)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            HourlyWage = hourlyWage;
+            StartDate = null; // Default to null
+            IsAvailable = true; // Default to True
+        }
+        public Contractor(string firstName, string lastName, double hourlyWage, DateOnly? startDate, bool isAvailable=true)
         {
             FirstName = firstName;
             LastName = lastName;
             HourlyWage = hourlyWage;
             StartDate = startDate == null ? null : startDate; // Default to null
-            IsAvailable = isAvailable; // Default to False
+            IsAvailable = isAvailable; // Default to True
         }
-        public Contractor(string firstName, string lastName, double hourlyWage, string? startDate=null, bool isAvailable=false)
+        public Contractor(string firstName, string lastName, double hourlyWage, string? startDate, bool isAvailable=true)
         {
             FirstName = firstName;
             LastName = lastName;
             HourlyWage = hourlyWage;
             StartDate = startDate == null ? null : DateOnly.Parse(startDate); // // Default to null; Parse if startDate given as a string
-            IsAvailable = isAvailable; // Default to False
+            IsAvailable = isAvailable; // Default to True
         }
 
         public override string ToString()
