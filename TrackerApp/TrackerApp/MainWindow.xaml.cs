@@ -20,9 +20,24 @@ namespace TrackerApp
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        RecruitmentSystem recruitmentSystem = new RecruitmentSystem();
+
         public MainWindow()
         {
+            // Add Initial Data to RecruitmentSystem
+            recruitmentSystem.AddContractor(new Contractor("Cedric", "Anover", 45));
+            recruitmentSystem.AddContractor(new Contractor("John", "Cena", 12));
+            recruitmentSystem.AddContractor(new Contractor("Jack", "Ma", 500d));
+
+            recruitmentSystem.AddJob(new Job("Data Scientist", "29/12/2023", 300000));
+            recruitmentSystem.AddJob(new Job("Data Engineer", "5/11/2023", 100000));
+            recruitmentSystem.AddJob(new Job("Programmer", "6/01/2024", 100000));
+
+
             InitializeComponent();
+
+
         }
     }
 }
