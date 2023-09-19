@@ -113,11 +113,13 @@ namespace TrackerApp
         private void btnViewAvailableContractors_Click(object sender, RoutedEventArgs e)
         {
             datagridContractor.ItemsSource = recruitmentSystem.GetAvailableContractors();
+            tabctrlTables.SelectedItem = tabitemContractor;
         }
 
         private void btnViewUnassignedJobs_Click(object sender, RoutedEventArgs e)
         {
             datagridJob.ItemsSource = recruitmentSystem.GetUnassignedJobs();
+            tabctrlTables.SelectedItem = tabitemJob;
         }
     }
 }

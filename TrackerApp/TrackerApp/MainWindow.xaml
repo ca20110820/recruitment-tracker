@@ -45,7 +45,7 @@
         </GroupBox>
 
         <TabControl x:Name="tabctrlTables" Margin="631,61,10,172">
-            <TabItem Header="Contractor">
+            <TabItem x:Name="tabitemContractor" Header="Contractor">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="datagridContractor" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="True" SelectionChanged="datagridContractor_SelectionChanged">
                         <DataGrid.Columns>
@@ -60,7 +60,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Job">
+            <TabItem x:Name="tabitemJob" Header="Job">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="datagridJob" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="True" SelectionChanged="datagridJob_SelectionChanged" >
                         <DataGrid.Columns>
