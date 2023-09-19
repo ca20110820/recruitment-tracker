@@ -25,6 +25,8 @@ namespace TrackerApp
 
         public MainWindow()
         {
+
+            InitializeComponent();
             // Add Initial Data to RecruitmentSystem
             recruitmentSystem.AddContractor(new Contractor("Cedric", "Anover", 45));
             recruitmentSystem.AddContractor(new Contractor("John", "Cena", 12));
@@ -34,17 +36,12 @@ namespace TrackerApp
             recruitmentSystem.AddJob(new Job("Data Engineer", "5/11/2023", 100000));
             recruitmentSystem.AddJob(new Job("Programmer", "6/01/2024", 100000));
 
-
-            InitializeComponent();
-
-
-
-
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            
+            datagridContractor.ItemsSource = recruitmentSystem.contractors;
+            datagridJob.ItemsSource = recruitmentSystem.jobs;
         }
     }
 }

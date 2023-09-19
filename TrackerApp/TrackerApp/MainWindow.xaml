@@ -68,7 +68,7 @@
                     <DataGrid x:Name="datagridContractor" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
-                            <DataGridTextColumn Header="Last Name" Binding="{Binding Last}"/>
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
                             <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate}"/>
                             <DataGridTextColumn Header="Hourly Wage" Binding="{Binding HourlyWage}"/>
                             <DataGridTextColumn Header="IsAvailable" Binding="{Binding IsAvailable}"/>
