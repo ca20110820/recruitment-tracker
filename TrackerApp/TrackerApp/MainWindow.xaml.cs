@@ -229,5 +229,29 @@ namespace TrackerApp
             contractor.HourlyWage = Math.Round(sliderHourlyWage.Value, 2);
 
         }
+
+        private void btnAddJob_Click(object sender, RoutedEventArgs e)
+        {
+            // Show MessageBox if Invalid Inputs
+            if (txtbxTitle.Text.Trim().Length == 0 || datepickerJobDate.SelectedDate == null || sliderCost.Value == 0 || (bool)chkbxCompleted.IsChecked)
+            {
+                MessageBox.Show("Invalid Input", "Error", MessageBoxButton.OK);
+                return;
+            }
+
+            // Create New Job object
+            var dateOnly = new DateOnly(datepickerJobDate.SelectedDate.Value.Year, datepickerJobDate.SelectedDate.Value.Month, datepickerJobDate.SelectedDate.Value.Day);
+            Job newJob = new Job(txtbxTitle.Text, dateOnly, Math.Round(sliderCost.Value,2));
+
+            try
+            {
+                recruitmentSystem.AddJob(newJob);
+            }
+            catch
+            {
+                MessageBox.Show("Job already exist", "Error", MessageBoxButton.OK);
+                return;
+            }
+        }
     }
 }
