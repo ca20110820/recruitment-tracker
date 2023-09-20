@@ -9,7 +9,7 @@ namespace TrackerApp
 {
     public class Job
     {
-        public string Title { get; private set; }
+        public string Title { get; set; }
         public DateOnly Date { get; set; }
         public double Cost { get; set; }
         public bool Completed { get; set; }
