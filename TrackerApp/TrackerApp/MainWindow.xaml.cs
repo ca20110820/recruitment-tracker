@@ -24,6 +24,8 @@ namespace TrackerApp
 
         RecruitmentSystem recruitmentSystem = new RecruitmentSystem();
 
+        bool flagContractorAssignChanged = false;
+
         public MainWindow()
         {
 
@@ -66,6 +68,8 @@ namespace TrackerApp
 
         private void datagridJob_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            flagContractorAssignChanged = false; // Set flagContractorAssignChanged to false
+
             Job selectedJob = (Job)datagridJob.SelectedItem;
 
             if (selectedJob != null) // Sometimes Job is resulting in null
@@ -311,6 +315,11 @@ namespace TrackerApp
                 MessageBox.Show("Invalid Operation", "Error", MessageBoxButton.OK);
                 return;
             }
+        }
+
+        private void comboboxContractorAssigned_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            flagContractorAssignChanged = true;
         }
     }
 }
