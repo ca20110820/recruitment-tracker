@@ -264,7 +264,7 @@ namespace TrackerApp
 
             if (datagridJob.SelectedItem == null) // Make sure user selected a job to be modified
             {
-                MessageBox.Show("Please select a Job", "Warning", MessageBoxButton.OK);
+                MessageBox.Show("Please select a Job", "Warn", MessageBoxButton.OK);
                 tabctrlTables.SelectedItem = tabitemJob; // Focus on tabitemContractor widget
                 return;
             }
@@ -274,7 +274,7 @@ namespace TrackerApp
             // Check invalid modified properties
             if (txtbxTitle.Text.Trim().Length==0|| datepickerJobDate.SelectedDate==null||sliderCost.Value==0)
             {
-                MessageBox.Show("Invalid New Values", "Warning", MessageBoxButton.OK);
+                MessageBox.Show("Invalid New Values", "Error", MessageBoxButton.OK);
                 return;
             }
 
@@ -284,13 +284,33 @@ namespace TrackerApp
                 return;
             }
 
+            selectedJob.Title = txtbxTitle.Text;
+            selectedJob.Date = new DateOnly(datepickerJobDate.SelectedDate.Value.Year, datepickerJobDate.SelectedDate.Value.Month, datepickerJobDate.SelectedDate.Value.Day);
+            selectedJob.Cost = Math.Round(sliderCost.Value, 2);
 
-            // TODO: Modify the Job instance with new properties
 
+            //if(comboboxContractorAssigned.SelectionChanged)
+            //{
+
+            //}
+
+            Contractor? selectedContractor = (Contractor?)comboboxContractorAssigned.SelectedItem; // Get Selected Contractor from ComboBox widget
+            //if (selectedContractor == null)
+            //{
+            //    MessageBox.Show("Please select an appropriate Contractor", "Warn", MessageBoxButton.OK);
+            //    return;
+            //}
 
             // TODO: Assign an appropriate Contractor
+            try
+            {
 
-
+            }
+            catch
+            {
+                MessageBox.Show("Invalid Operation", "Error", MessageBoxButton.OK);
+                return;
+            }
         }
     }
 }
