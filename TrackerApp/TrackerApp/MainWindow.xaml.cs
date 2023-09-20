@@ -205,5 +205,29 @@ namespace TrackerApp
             }
             
         }
+
+        private void btnUpdateContractor_Click(object sender, RoutedEventArgs e)
+        {
+            if (datagridContractor.SelectedItem == null) // Make sure user selected a contractor to be modified
+            {
+                MessageBox.Show("Please select a Contractor", "Warning", MessageBoxButton.OK);
+                tabctrlTables.SelectedItem = tabitemContractor; // Focus on tabitemContractor widget
+                return;
+            }
+
+            Contractor contractor = (Contractor)datagridContractor.SelectedItem; // Get Selected Contractor
+
+            // Show MessageBox if Invalid Inputs
+            if (txtbxFirstName.Text.Trim().Length == 0 || txtbxLastName.Text.Trim().Length == 0 || Math.Round(sliderHourlyWage.Value, 2) == 0)
+            {
+                MessageBox.Show("Invalid Input", "Error", MessageBoxButton.OK);
+                return;
+            }
+
+            contractor.FirstName = txtbxFirstName.Text;
+            contractor.LastName = txtbxLastName.Text;
+            contractor.HourlyWage = Math.Round(sliderHourlyWage.Value, 2);
+
+        }
     }
 }
