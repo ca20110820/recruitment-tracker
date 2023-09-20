@@ -31,10 +31,10 @@ namespace TrackerApp
 
             InitializeComponent();
             // Add Initial Data to RecruitmentSystem
-            recruitmentSystem.AddContractor(new Contractor("Cedric", "Anover", 45, "23/09/2023"));
-            recruitmentSystem.AddContractor(new Contractor("John", "Cena", 12, "05/01/2023"));
+            recruitmentSystem.AddContractor(new Contractor("Cedric", "Anover", 45));
+            recruitmentSystem.AddContractor(new Contractor("John", "Cena", 12));
             recruitmentSystem.AddContractor(new Contractor("Jack", "Ma", 200d));
-            recruitmentSystem.AddContractor(new Contractor("John", "Wick", 50d, "29/06/2023", false));
+            recruitmentSystem.AddContractor(new Contractor("John", "Wick", 50d));
 
             recruitmentSystem.AddJob(new Job("Data Scientist", "29/12/2023", 300000));
             recruitmentSystem.AddJob(new Job("Data Engineer", "5/11/2023", 70000));
@@ -262,8 +262,6 @@ namespace TrackerApp
         {
             // Note: UpdateJob button can be used to change the state of the Job, i.e. Assign a Contractor or Change to Finish Status.
 
-            // Reset Itemssource of comboboxContractorAssigned based from Available Contractors
-            comboboxContractorAssigned.ItemsSource = null;
             comboboxContractorAssigned.ItemsSource = recruitmentSystem.GetAvailableContractors();
 
             if (datagridJob.SelectedItem == null) // Make sure user selected a job to be modified
@@ -292,28 +290,20 @@ namespace TrackerApp
             selectedJob.Date = new DateOnly(datepickerJobDate.SelectedDate.Value.Year, datepickerJobDate.SelectedDate.Value.Month, datepickerJobDate.SelectedDate.Value.Day);
             selectedJob.Cost = Math.Round(sliderCost.Value, 2);
 
-
-            //if(comboboxContractorAssigned.SelectionChanged)
-            //{
-
-            //}
-
-            Contractor? selectedContractor = (Contractor?)comboboxContractorAssigned.SelectedItem; // Get Selected Contractor from ComboBox widget
-            //if (selectedContractor == null)
-            //{
-            //    MessageBox.Show("Please select an appropriate Contractor", "Warn", MessageBoxButton.OK);
-            //    return;
-            //}
-
-            // TODO: Assign an appropriate Contractor
-            try
+            Contractor? selectedContractor = (Contractor?)comboboxContractorAssigned.SelectedItem;
+            if (!selectedJob.Completed && selectedJob.ContractorAssigned == null && selectedContractor != null)
             {
-
+                //selectedJob.ContractorAssigned = selectedContractor;
+                recruitmentSystem.AssignJob(selectedJob, selectedContractor); // Assign New Contractor
             }
-            catch
+            // We want to deassign Old Contractor and Assign New Contractor to the Job
+            else if (!selectedJob.Completed && selectedJob.ContractorAssigned != null && selectedContractor != null)
             {
-                MessageBox.Show("Invalid Operation", "Error", MessageBoxButton.OK);
-                return;
+                if (selectedJob.ContractorAssigned.FullName != selectedContractor.FullName)
+                {
+                    selectedJob.DeassignContractor(); // Deassign Old Contractor
+                    recruitmentSystem.AssignJob(selectedJob, selectedContractor); // Assign New Contractor
+                }
             }
         }
 

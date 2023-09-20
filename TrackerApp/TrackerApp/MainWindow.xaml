@@ -39,7 +39,7 @@
                 <CheckBox x:Name="chkbxCompleted" Content="Job Completed?" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
 
                 <Label Content="Contractor Assigned" Height="30" HorizontalAlignment="Left" Width="200" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" VerticalContentAlignment="Center"/>
-                <ComboBox x:Name="comboboxContractorAssigned" Height="28"/>
+                <ComboBox x:Name="comboboxContractorAssigned" Height="28" SelectionChanged="comboboxContractorAssigned_SelectionChanged"/>
 
             </StackPanel>
         </GroupBox>
