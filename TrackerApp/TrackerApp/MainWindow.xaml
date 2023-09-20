@@ -80,7 +80,7 @@
         <Button x:Name="btnUpdateContractor" Content="Update Contractor" HorizontalAlignment="Left" Margin="112,567,0,0" VerticalAlignment="Top" Click="btnUpdateContractor_Click"/>
         
         <Button x:Name="btnAddJob" Content="Add Job" HorizontalAlignment="Left" Margin="449,517,0,0" VerticalAlignment="Top" Click="btnAddJob_Click"/>
-        <Button x:Name="btnUpdateJob" Content="Update Job" HorizontalAlignment="Left" Margin="441,542,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnUpdateJob" Content="Update Job" HorizontalAlignment="Left" Margin="441,542,0,0" VerticalAlignment="Top" Click="btnUpdateJob_Click"/>
         
         <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="1039,517,0,0" VerticalAlignment="Top" Click="btnRefresh_Click"/>
 

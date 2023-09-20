@@ -253,5 +253,44 @@ namespace TrackerApp
                 return;
             }
         }
+
+        private void btnUpdateJob_Click(object sender, RoutedEventArgs e)
+        {
+            // Note: UpdateJob button can be used to change the state of the Job, i.e. Assign a Contractor or Change to Finish Status.
+
+            // Reset Itemssource of comboboxContractorAssigned based from Available Contractors
+            comboboxContractorAssigned.ItemsSource = null;
+            comboboxContractorAssigned.ItemsSource = recruitmentSystem.GetAvailableContractors();
+
+            if (datagridJob.SelectedItem == null) // Make sure user selected a job to be modified
+            {
+                MessageBox.Show("Please select a Job", "Warning", MessageBoxButton.OK);
+                tabctrlTables.SelectedItem = tabitemJob; // Focus on tabitemContractor widget
+                return;
+            }
+
+            Job selectedJob = (Job)datagridJob.SelectedItem; // Get Selected Job
+
+            // Check invalid modified properties
+            if (txtbxTitle.Text.Trim().Length==0|| datepickerJobDate.SelectedDate==null||sliderCost.Value==0)
+            {
+                MessageBox.Show("Invalid New Values", "Warning", MessageBoxButton.OK);
+                return;
+            }
+
+            if (chkbxCompleted.IsChecked.Value) // If Job is Finished
+            {
+                recruitmentSystem.CompleteJob(selectedJob);
+                return;
+            }
+
+
+            // TODO: Modify the Job instance with new properties
+
+
+            // TODO: Assign an appropriate Contractor
+
+
+        }
     }
 }
